@@ -11,8 +11,8 @@ import AppWeather from './src/components/AppWeather';
 
 const App = () => {
   const [search, setSearch] = useState({
-    country: '',
     city: '',
+    country: '',
   });
   const [getState, setState] = useState(false);
   const [result, setResult] = useState({});
@@ -20,17 +20,19 @@ const App = () => {
   const {city, country} = search;
 
   useEffect(() => {
+    console.log('App : the response is: ' + getState);
+
     const getWeather = async () => {
       if (getState) {
         const apiKey = '56bd81eb644f60676d2efee945de812e';
         const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}`;
 
+        console.log('App : the url is: ' + url);
         try {
           const response = await fetch(url);
+          console.log('App : the response is: ' + response);
           const result = await response.json();
-
-          console.log('the response is: ' + response);
-          console.log('the result is: ' + result);
+          console.log('App : the result is: ' + result);
 
           setResult(result);
           setState(false);

@@ -17,12 +17,15 @@ const AppForm = ({search, setSearch, setState}) => {
   const [btnAnimation] = useState(new Animated.Value(1));
 
   const checkFields = () => {
-    console.log('cheking data=  ' + 'country: ' + country + ' city: ' + city);
+    console.log(
+      'AppForm: cheking data=  ' + 'country: ' + country + ', city: ' + city,
+    );
     if (country.trim() === '' || city.trim() === '') {
       showValidationDialog();
       return;
     }
     // consultar la api
+    console.log('AppForm: cheking API');
     setState(true);
   };
 
@@ -71,17 +74,17 @@ const AppForm = ({search, setSearch, setState}) => {
             selectedValue={country}
             itemStyle={{height: 120, backgroundColor: '#FFF'}}
             onValueChange={country => setSearch({...search, country})}>
-            <Picker.Item label=" -- Select a country --" value="" />
-            <Picker.Item label=" U S A" value="US" />
-            <Picker.Item label=" Mexico" value="MX" />
-            <Picker.Item label=" Argentina" value="AR" />
-            <Picker.Item label=" Colombia" value="CO" />
-            <Picker.Item label=" Costa Rica" value="CR" />
-            <Picker.Item label=" Spain" value="ES" />
-            <Picker.Item label=" Peru" value="PE" />
+            <Picker.Item label="-- Select a country --" value="" />
+            <Picker.Item label="USA" value="US" />
+            <Picker.Item label="Mexico" value="MX" />
+            <Picker.Item label="Argentina" value="AR" />
+            <Picker.Item label="Colombia" value="CO" />
+            <Picker.Item label="Costa Rica" value="CR" />
+            <Picker.Item label="Spain" value="ES" />
+            <Picker.Item label="Peru" value="PE" />
           </Picker>
         </View>
-        
+
         <TouchableWithoutFeedback
           onPressIn={() => animateIn()}
           onPressOut={() => animateOut()}

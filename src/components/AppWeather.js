@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
 
-const Clima = ({result}) => {
+const AppWeather = ({result}) => {
   const {name, main} = result;
 
   if (!name) {
@@ -11,7 +11,7 @@ const Clima = ({result}) => {
   // grados kelvin
   const kelvin = 273.15;
 
-  console.log(result);
+  console.log('AppWeather, result is : ' + result);
   return (
     <View style={styles.weather}>
       <Text style={[styles.text, styles.current]}>
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Clima;
+export default AppWeather;
