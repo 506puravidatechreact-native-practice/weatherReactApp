@@ -7,7 +7,7 @@ import {
   Alert,
 } from 'react-native';
 import AppForm from './src/components/AppForm';
-import Clima from './src/components/AppWheater';
+import AppWeather from './src/components/AppWeather';
 
 const App = () => {
   const [search, setSearch] = useState({
@@ -28,6 +28,10 @@ const App = () => {
         try {
           const response = await fetch(url);
           const result = await response.json();
+
+          console.log('the response is: ' + response);
+          console.log('the result is: ' + result);
+
           setResult(result);
           setState(false);
 
@@ -69,11 +73,10 @@ const App = () => {
       <TouchableWithoutFeedback onPress={() => hideKeyboard()}>
         <View style={[styles.mainApp, bgColorApp]}>
           <View style={styles.wrapper}>
-            <Clima result={result} />
+            <AppWeather result={result} />
             <AppForm
               search={search}
               setSearch={setSearch}
-              getState={getState}
               setState={setState}
             />
           </View>
